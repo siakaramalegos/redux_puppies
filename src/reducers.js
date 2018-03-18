@@ -1,4 +1,5 @@
 import * as PuppyActions from './actions'
+import { combineReducers } from 'redux';
 
 function puppies(state = [], action) {
   console.log(action);
@@ -21,4 +22,15 @@ function puppies(state = [], action) {
   }
 }
 
-export default puppies
+function availabilityFilter(state = 'SHOW_ALL', action) {
+  console.log(action);
+
+  switch (action.type) {
+    case PuppyActions.UPDATE_FILTER:
+      return action.data
+    default:
+      return state
+  }
+}
+
+export default combineReducers({ puppies, availabilityFilter })
