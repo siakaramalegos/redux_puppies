@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
 import puppies from './reducers';
-import { createPuppy } from './actions';
+import { createPuppy, adoptPuppy } from './actions';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -15,20 +15,23 @@ console.log(store.getState());
 
 // Dispatch actions to create a puppies
 store.dispatch(createPuppy({
-  data: {
-    name: 'Priscilla Queen',
-    breed: 'Australian Shepherd',
-    available: true,
-  }
+  name: 'Priscilla Queen',
+  breed: 'Australian Shepherd',
+  available: true,
+  id: 1
 }))
 
 store.dispatch(createPuppy({
-  data: {
-    name: 'Sean Connery',
-    breed: 'Scottish Terrier',
-    available: true,
-  }
+  name: 'Sean Connery',
+  breed: 'Scottish Terrier',
+  available: true,
+  id: 2
 }))
+
+// Check that the state updated
+console.log(store.getState());
+
+store.dispatch(adoptPuppy(2))
 
 // Check that the state updated
 console.log(store.getState());
