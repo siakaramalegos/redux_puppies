@@ -10,8 +10,11 @@ import registerServiceWorker from './registerServiceWorker';
 // Create the store with the combined reducer
 const store = createStore(combinedReducers)
 
-// Log the initial state - notice the different shape
-console.log(store.getState());
+// Set up the listener
+const unsubscribe = store.subscribe(() => {
+  // Log every state change to the console
+  console.log(store.getState());
+})
 
 // Dispatch actions to create a puppies
 store.dispatch(createPuppy({
@@ -28,15 +31,12 @@ store.dispatch(createPuppy({
   id: 2
 }))
 
-// Check that the state updated
-console.log(store.getState());
-
 store.dispatch(adoptPuppy(2))
 
 store.dispatch(updateFilter('SHOW_AVAILABLE'))
 
-// Check that the state updated
-console.log(store.getState());
+// Unregister/cancel the listener
+unsubscribe()
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
