@@ -1,7 +1,8 @@
+import * as PuppyActions from './actions'
 
 function puppies(state = [], action) {
   switch (action.type) {
-    case 'CREATE_PUPPY':
+    case PuppyActions.CREATE_PUPPY:
       return [
         ...state,
         action.data,

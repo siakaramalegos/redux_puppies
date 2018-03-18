@@ -1,5 +1,6 @@
 import { createStore } from 'redux';
 import puppies from './reducers';
+import { createPuppy } from './actions';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -12,14 +13,22 @@ const store = createStore(puppies)
 // Log the initial state
 console.log(store.getState());
 
-// Dispatch an action to create a puppy
-store.dispatch({
-  type: 'CREATE_PUPPY',
+// Dispatch actions to create a puppies
+store.dispatch(createPuppy({
   data: {
     name: 'Priscilla Queen',
     breed: 'Australian Shepherd',
+    available: true,
   }
-})
+}))
+
+store.dispatch(createPuppy({
+  data: {
+    name: 'Sean Connery',
+    breed: 'Scottish Terrier',
+    available: true,
+  }
+}))
 
 // Check that the state updated
 console.log(store.getState());
