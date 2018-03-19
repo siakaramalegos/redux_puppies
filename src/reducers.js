@@ -1,8 +1,7 @@
 import * as PuppyActions from './actions'
 import { combineReducers } from 'redux';
-const initialPuppies = require('./puppies.json')
 
-function puppies(state = initialPuppies, action) {
+function puppies(state = [], action) {
   console.log(action);
 
   switch (action.type) {
@@ -18,14 +17,14 @@ function puppies(state = initialPuppies, action) {
         }
         return puppy
       })
+    case PuppyActions.RECEIVE_PUPPIES:
+      return action.data
     default:
       return state
   }
 }
 
 function availabilityFilter(state = 'SHOW_ALL', action) {
-  console.log(action);
-
   switch (action.type) {
     case PuppyActions.UPDATE_FILTER:
       return action.data
@@ -34,4 +33,15 @@ function availabilityFilter(state = 'SHOW_ALL', action) {
   }
 }
 
-export default combineReducers({ puppies, availabilityFilter })
+function loading(state = false, action) {
+  switch (action.type) {
+    case PuppyActions.REQUEST_PUPPIES:
+      return true
+    case PuppyActions.RECEIVE_PUPPIES:
+      return false
+    default:
+      return state
+  }
+}
+
+export default combineReducers({ puppies, availabilityFilter, loading })
