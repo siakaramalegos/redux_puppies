@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Jumbotron, Container } from 'reactstrap';
-import PuppyList from './components/PuppyList';
-const puppies = require('./puppies.json')
+import PuppyListContainer from './containers/PuppyListContainer';
 
 class App extends Component {
   render() {
@@ -9,12 +8,12 @@ class App extends Component {
       <div className="App">
         <Jumbotron>
           <Container>
-            <h1>Pug Life</h1>
+            <h1 className="display-3">Pug Life</h1>
             <p className="lead">Poo what you gotta poo.</p>
           </Container>
         </Jumbotron>
         <Container>
-          <PuppyList puppies={puppies} />
+          <PuppyListContainer />
         </Container>
       </div>
     );

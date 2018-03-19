@@ -1,7 +1,8 @@
 import * as PuppyActions from './actions'
 import { combineReducers } from 'redux';
+const initialPuppies = require('./puppies.json')
 
-function puppies(state = [], action) {
+function puppies(state = initialPuppies, action) {
   console.log(action);
 
   switch (action.type) {
