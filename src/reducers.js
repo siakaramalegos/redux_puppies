@@ -33,12 +33,12 @@ function availabilityFilter(state = 'SHOW_ALL', action) {
   }
 }
 
-function loading(state = false, action) {
+function loading(state = { loading: false }, action) {
   switch (action.type) {
     case PuppyActions.REQUEST_PUPPIES:
-      return true
+      return { ...state, loading: true }
     case PuppyActions.RECEIVE_PUPPIES:
-      return false
+      return { ...state, loading: false }
     default:
       return state
   }

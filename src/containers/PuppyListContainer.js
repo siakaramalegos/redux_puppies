@@ -9,12 +9,16 @@ class PuppyListContainer extends Component {
   }
 
   render() {
-    return <PuppyList {...this.props} />
+    const { fetchPuppies, ...rest } = this.props
+    return <PuppyList {...rest} />
   }
 }
 
 const mapStateToProps = (state) => {
-  return { puppies: state.puppies }
+  return {
+    puppies: state.puppies,
+    loading: state.loading.loading,
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
