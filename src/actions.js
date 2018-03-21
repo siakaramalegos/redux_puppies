@@ -38,6 +38,7 @@ export const fetchPuppies = () => (dispatch) => {
       dispatch(receivePuppies(json))
     })
     .catch(err => {
+      // TODO: dispatch an action to receive error which sets the error in state and sets isLoading to false
       const error = new Error(err)
       console.error(error);
       throw error
