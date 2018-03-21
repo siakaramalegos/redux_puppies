@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PuppyList from '../components/PuppyList';
-import { adoptPuppy, fetchPuppies } from '../actions';
+import { adoptPuppy } from '../actions';
 
 class PuppyListContainer extends Component {
-  componentDidMount() {
-    this.props.fetchPuppies()
-  }
-
   render() {
-    const { fetchPuppies, ...rest } = this.props
-    return <PuppyList {...rest} />
+    return <PuppyList {...this.props} />
   }
 }
 
@@ -24,7 +19,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     adoptPuppy: (id) => { dispatch(adoptPuppy(id)) },
-    fetchPuppies: () => { dispatch(fetchPuppies()) },
   }
 }
 
