@@ -28,7 +28,8 @@ export const fetchPuppies = () => (dispatch) => {
   dispatch(requestPuppies())
 
   // How to access contents of a Github file https://stackoverflow.com/a/14716043/5049215
-  const puppiesUrl = 'https://api.github.com/repos/siakaramalegos/redux_puppies/contents/src/puppies.json'
+  // https://s3-us-west-2.amazonaws.com/sia-generic-bucket/puppies.json
+  const puppiesUrl = 'https://s3-us-west-2.amazonaws.com/sia-generic-bucket/puppies.json'
   const headers = new Headers()
   headers.append('Accept', 'application/vnd.github.3.raw')
 
